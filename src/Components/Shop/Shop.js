@@ -3,17 +3,14 @@ import { addToDb,getStoredCart } from '../../utilities/fakedb';
 
 import Cart from '../Cart/Cart';
 import Products from '../Products/Products';
+import useProducts from '../../Hooks/useProducts';
+
 import './Shop.css'
 const Shop = () => {
-    const [products,setProducts]=useState([])
-   const [cart,setCart]=useState([]);
-    useEffect(()=>{
-    fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
-    .then(response=>response.json())
-    .then(data=>setProducts(data))
+const [products,setProducts]=useProducts();
 
-    },[])
-   
+   const [cart,setCart]=useState([]);
+
     useEffect(()=>{
         const storedCart=getStoredCart();
         const savedCart=[];
